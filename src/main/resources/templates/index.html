@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button onclick="pagamentoVisa()">Pagamento Visa</button>
+<br>
+<button onclick="pagamentoMaster()">Pagamento Master</button>
+
+<span id="msg" th:text="${msg}"></span>
+<br>
+
+<script>
+    function pagamentoVisa() {
+        fetch('http://localhost:8080/pagamentoVisa').then(r => r.json()).then(function(data) {
+            document.body.innerHTML += '<span>' + data + '</span><br>'
+        })
+    }
+
+    function pagamentoMaster() {
+        fetch('http://localhost:8080/pagamentoMaster').then(r => r.json()).then(function(data) {
+            document.body.innerHTML += '<span>' + data + '</span><br>'
+        })
+    }
+</script>
+
+</body>
+</html>
